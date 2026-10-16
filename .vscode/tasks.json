@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "编译当前文件夹（全部 cpp 一起编）",
+			"type": "shell",
+			"command": "New-Item -ItemType Directory -Force -Path '${fileDirname}\\output' | Out-Null; g++ -Wall -Wextra -g3 -fexec-charset=GBK '${fileDirname}\\*.cpp' -o '${fileDirname}\\output\\main.exe'; exit $LASTEXITCODE",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"detail": "编译活动文件所在文件夹里的所有 .cpp。多文件项目必须把 main.cpp 和 swap.cpp 一起编，只编一个会报 undefined reference。"
+		}
+	]
+}
